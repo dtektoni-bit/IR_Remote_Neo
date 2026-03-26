@@ -81,4 +81,4 @@ ln -sf /etc/lirc/lircrc /etc/lirc/irexec.lircrc || true
 
 # --- 10. Скопировать конфиги Xtreamer ---
 echo "Copying Xtreamer remote config..."
-mkdir -p /data/INTERNAL/ir_controller/configurations/
+mkdir -p -m 777 /data/INTERNAL/ir_controller/configurations/Xtreamer
