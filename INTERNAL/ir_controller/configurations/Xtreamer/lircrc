@@ -1,0 +1,103 @@
+begin
+prog = irexec
+button = KEY_PLAYPAUSE
+repeat = 0
+config = /usr/local/bin/volumio toggle &
+end
+
+begin
+prog = irexec
+button = KEY_STOP
+repeat = 0
+config = /usr/local/bin/volumio stop &
+end
+
+begin
+prog = irexec
+button = KEY_PAGEUP
+repeat = 0
+config = /usr/local/bin/volumio previous &
+end
+
+begin
+prog = irexec
+button = KEY_PAGEDOWN
+repeat = 0
+config = /usr/local/bin/volumio next &
+end
+
+begin
+prog = irexec
+button = KEY_REWIND
+repeat = 0
+config = /usr/local/bin/volumio seek minus &
+end
+
+begin
+prog = irexec
+button = KEY_FORWARD
+config = /usr/local/bin/volumio seek plus &
+repeat = 0	
+end
+
+begin
+prog = irexec
+button = KEY_RESTART
+repeat = 0
+config = /usr/local/bin/volumio repeat &
+end
+
+begin
+prog = irexec
+button = KEY_1
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=0" &
+end
+begin
+prog = irexec
+button = KEY_2
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=1" &
+end
+begin
+prog = irexec
+button = KEY_3
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=2" &
+end
+begin
+prog = irexec
+button = KEY_4
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=3" &
+end
+begin
+prog = irexec
+button = KEY_5
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=4" &
+end
+begin
+prog = irexec
+button = KEY_6
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=5" &
+end
+begin
+prog = irexec
+button = KEY_7
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=6" &
+end
+begin
+prog = irexec
+button = KEY_8
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=7" &
+end
+begin
+prog = irexec
+button = KEY_9
+repeat = 0
+config = curl "http://localhost:3000/api/v1/commands/?cmd=play&N=8" &
+end
