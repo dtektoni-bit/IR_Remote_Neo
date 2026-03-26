@@ -1,0 +1,15 @@
+/dts-v1/;
+ /plugin/;
+ / {
+         compatible = "allwinner,sun8i-h3";
+         fragment@0 {
+         target-path = "/"; 
+        __overlay__ {
+            gpio_ir: ir-receiver {
+                compatible = "gpio-ir-receiver";
+                gpios = <&pio 6 9 1>; 
+                linux,rc-map-name = "rc-rc6-mce";
+            };
+        };
+    };
+};
