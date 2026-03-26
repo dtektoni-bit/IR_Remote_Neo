@@ -82,3 +82,26 @@ ln -sf /etc/lirc/lircrc /etc/lirc/irexec.lircrc || true
 # --- 10. Скопировать конфиги Xtreamer ---
 echo "Copying Xtreamer remote config..."
 mkdir -p -m 777 /data/INTERNAL/ir_controller/configurations/Xtreamer
+wget -q -O /data/INTERNAL/ir_controller/configurations/Xtreamer/lircd.conf "${REPO}/INTERNAL/ir_controller/configurations/Xtreamer/lircd.conf" || { echo "Downloading Xtreamer lircd.conf failed"; exit 1; }
+wget -q -O /data/INTERNAL/ir_controller/configurations/Xtreamer/lircrc "${REPO}/INTERNAL/ir_controller/configurations/Xtreamer/lircrc" || { echo "Downloading Xtreamer lircrc failed"; exit 1; }
+sed -i 's/\r//' /data/INTERNAL/ir_controller/configurations/Xtreamer/lircrc
+sed -i 's/\r//' /data/INTERNAL/ir_controller/configurations/Xtreamer/lircd.conf
+
+# --- 11. Отключить lircd — плагин запустит его сам ---
+echo "Applying LIRC starting policy..."
+systemctl disable lircd.service 2>/dev/null || true
+systemctl stop lircd.service 2>/dev/null || true
+
+# --- 12. Создать папку для пользовательских конфигов ---
+echo "Creating folder for custom LIRC configurations..."
+mkdir -p -m 777 /data/INTERNAL/"$PLUGIN_NAME"/configurations || { echo "Creating configurations folder failed"; exit 1; }
+chown volumio:volumio /data/INTERNAL/"$PLUGIN_NAME"/configurations || { echo "Setting permissions failed"; exit 1; }
+
+systemctl daemon-reload
+
+echo "Install complete."
+echo ""
+echo "============================================"
+echo "  REBOOT REQUIRED to activate IR receiver  "
+echo "  sudo reboot                               "
+echo "============================================"
